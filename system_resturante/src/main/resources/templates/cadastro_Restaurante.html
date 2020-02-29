@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">FIORDE</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation"></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Restaurantes  <span class="sr-only">(current)</span></a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownId">
+                      <a class="dropdown-item" href="/pesquisa">Pesquisar</a>
+                      <a class="dropdown-item" href="/cad">Cadastrar</a>
+                  </div>
+              </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pratos</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" href="../templates/pesquisar_Pratos.html">Pesquisar</a>
+                        <a class="dropdown-item" href="../templates/cadastro_Pratos.html">Cadastrar</a>
+                    </div>
+                </li>
+            </ul>             
+        </div>          
+    </nav>
+
+      <br/>
+      <h1>CADASTRAR RESTUARANTE</h1>
+      <br/>
+      <form class="form-group" style="margin-left: 50px; margin-right: 50px;">
+        <div class="form-group">
+          <label for="">NOME RESTAURANTE:</label>
+          <input type="text" name="" id="nomeRestar" class="form-control" placeholder="" aria-describedby="helpId">
+          <small id="helpId" class="text-muted">Help text</small>
+        </div>     
+        <button type="button" name="" id="btn_cad" class="btn btn-primary btn-lg btn-block">CADASTRAR</button>
+        <a href="/pesquisa" class="btn btn-danger btn-lg btn-block">CANCELAR</a>
+    </form>        
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="application/javascript">
+    $(document).ready(function () {
+       $('#btn_cad').on("click",function (e) {
+           e.preventDefault();
+           var RestarNome;
+           RestarNome = $('#nomeRestar').val();
+                      
+            var data = {};
+            data["nomeRestaurante"] = RestarNome;
+            
+            if($.trim(RestarNome) === "")
+            {
+                alert("Preecha todos os campos!");
+            }
+            else
+            {
+                    $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    url: "/cadastroRestaurante",
+                    data: JSON.stringify(data),
+                    dataType: 'json',
+                    timeout: 6000,
+                    success: function (data) {
+                        if (confirm("Restaurante "+RestarNome+" Salvo com Sucesso!")){
+                            window.location.reload();
+                        }
+                        else{
+                            alert("Erro");
+                        }
+                    }                                      
+                });        
+            }            
+       });
+    });
+  </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>    
+      
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">FIORDE</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation"></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Restaurantes</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownId">
+                      <a class="dropdown-item" href="/pesquisa">Pesquisar</a>
+                      <a class="dropdown-item" href="/cad">Cadastrar</a>
+                  </div>
+              </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pratos </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" href="../templates/pesquisar_Pratos.html">Pesquisar</a>
+                        <a class="dropdown-item" href="../templates/cadastro_Pratos.html">Cadastrar</a>
+                    </div>
+                </li>
+            </ul>             
+        </div>          
+    </nav>
+      <br/>
+      <h1>CADASTRO PRATOS</h1>
+      <br/>
+            
+      <form class="form-group" style="margin-left: 50px; margin-right: 50px;">
+        <div class="form-group">
+          <label>RESTAURANTE</label>                              
+          <select >
+            <option th:each="restaurante : ${restaurantes}">
+              <label th:text="${restaurante.nomeRestaurante}"></label>
+            </option>            
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="">PRATO</label>
+          <input type="text" name="" id="txtPrato" class="form-control" placeholder="" aria-describedby="helpId">
+          <small id="helpId" class="text-muted">Help text</small>
+        </div>
+        <div class="form-group">
+          <label for="">PREÇO</label>
+          <input type="text" name="" id="txtPreco" class="form-control" placeholder="" aria-describedby="helpId">
+          <small id="helpId" class="text-muted">Help text</small>
+        </div>
+        <button type="button" name="" id="btn_cad" class="btn btn-primary btn-lg btn-block">CADASTRAR</button>
+        <button type="button" name="" id="btn_cancel" class="btn btn-danger btn-lg btn-block">CANCELAR</button>
+    </form>        
+    
+    
+  </body>
+</html>

@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DemoApplication<system_resturante>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.fiorde.system_resturante.DemoApplication",
+            "projectName": "system_resturante",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<system_resturante>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.fiorde.system_resturante.Application",
+            "projectName": "system_resturante",
+            "args": ""
+        }
+    ]
+}
