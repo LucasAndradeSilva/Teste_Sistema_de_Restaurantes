@@ -66,9 +66,8 @@
                     <td th:text="${restaurante.nomeRestaurante}"></td>                                        
 
                     <td>
-                        <button class="btn btn-danger" id="btn_del" >DELETAR</button>
-                        <button class="btn btn-primary" id="btn_edit" >EDITAR</button>
-                        <a class="invisiblea" id="idbook" th:text="${restaurante.id}"></a>
+                        <button class="btn btn-danger" th:id="${restaurante.id}" onclick="del()" th:value="${restaurante.id}">DELETAR</a>
+                        <button class="btn btn-primary" id="btn_edit" >EDITAR</button>                        
                     </td>
                 </tr>
                 </tbody>
@@ -77,6 +76,34 @@
       </div>
       <br/>
            
-   
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="application/javascript">
+    function del()
+    {
+        alert(id.toString());
+        var bookId;
+        bookId = $('#idbook').text();
+        var data = {}
+        data["id"] = bookId;
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+                    url: "/deletar",
+                    data: JSON.stringify(data),                  
+                    dataType: "json",
+                    timeout: 6000,
+                    success: function (data) {
+                        if (confirm("Restaurante deletado com Sucesso!")){
+                            window.location.reload();
+                        }
+                        else{
+                            alert("Erro");
+                        }
+                    }
+        });        
+    }
+
+   </script>
   </body>
 </html>
